@@ -1,12 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+const elem = <span>React Element</span>
+
 // React Element
 const Title = () => (
 <h1 className="head" tabIndex={5}>
+    {elem}
     Namasthe React using JSX!
 </h1>
-)
+);
+
+const number = 10000;
+// Functional Component without arrow functions
+const Title2 = function() {
+    return (
+    <h1 className="head" tabIndex={5}>
+        Namasthe React using JSX!
+    </h1>
+    );
+};
 
 // React Component
 // Class Based Component - Old 
@@ -26,13 +39,19 @@ const fn2 = () => {
 
 // const HeadingComponent2 = () =>  <h1>Namasthe React Functional Component</h1>;
 
-// Component Composition(Putting 1 Component inside another component)
+// Putting React Element inside a Component
+// React Fragment - behaves like an Empty tag
 const HeadingComponent3 = () => (
+    <>
     <div id="container">
+        {Title()}
+        <Title></Title>
         <Title />
         <h1 className="heading">Namasthe React From Functional Compoent3</h1>
     </div>
+    </>
 )
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
