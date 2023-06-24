@@ -1,18 +1,39 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// React.createElement => ReactElement-JS Object => HTML Element(render)
+// React Element
+const Title = () => (
+<h1 className="head" tabIndex={5}>
+    Namasthe React using JSX!
+</h1>
+)
 
-// const heading = React.createElement("h1", {id:"heading"},"Namasthe React");
-// console.log(heading);
+// React Component
+// Class Based Component - Old 
+// Functional Component - New
 
-// JSX - is not HTML in JS(HTML or XML like syntax) 
-// JSX (transpiled before it reaches the JS Engine) - PARCEL - Babel
+// React Functional Component - A Function which return some piece of JSX  is called as Functional Component
 
-// JSX => Babel transpiles it to React.createElement => ReactElement-JS Object => HTML Element(render)+
-const jsxHeading = <h1 className="head" tabIndex={5}>Namasthe React using JSX!</h1>
-console.log(jsxHeading);
+const fn = () => true;
+
+const fn2 = () => { 
+    return true 
+};
+
+// const HeadingComponent = () => {
+//     return <h1>Namasthe React Functional Component</h1>
+// };
+
+// const HeadingComponent2 = () =>  <h1>Namasthe React Functional Component</h1>;
+
+// Component Composition(Putting 1 Component inside another component)
+const HeadingComponent3 = () => (
+    <div id="container">
+        <Title />
+        <h1 className="heading">Namasthe React From Functional Compoent3</h1>
+    </div>
+)
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(jsxHeading);
+root.render(<HeadingComponent3 />);
