@@ -1,43 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Header from "./components/Header";
+import Body from "./components/Body";
 
-/**
- * Header
- *  - Logo
- *  - Nav Items
- * Body
- *  - Search
- *  - Restaurant Container
- *      - RestaurantCard
- *          - Img
- *          - Name of Rest, Star Rating, cuisine, delivery time
- * Footer
- *  - Copyright
- *  - Address
- *  - Contact
- */
-const Header = () => {
-    return (
-        <div className="header">
-            <div className="logo-container">
-                <img className="logo" src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png" />
-            </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-
-        </div>
-    )
-}
-
-const styleCard = {
-    backgroundColor: "#f0f0f0"
-}
 const RestaurantCard = (props) => {
     const { resData } = props;
     const {
@@ -1849,21 +1814,7 @@ const resList = [
 
   // not using keys (not acceptable) <<<<< index as key <<<<<<< unique id (best practice
 
-const Body = () => {
-    return (
-        <div className="body">
-            <div className="search">Search</div>
-            <div className="res-container">
-                {
-                    resList.map((restaurant, index) => (
-                        <RestaurantCard key={restaurant.data.id} resData={restaurant} />
-                    ))
-                }
-            </div>
 
-        </div>
-    )
-}
 const AppLayout = () => {
     return (
         <div className="app">
