@@ -59,3 +59,6 @@
     const [listOfRestaurants] = useState();
     // Normal JS Variable
     let listOfRestaurants;
+
+# Render
+   - Whenever a state variable updates react re-renders the component
