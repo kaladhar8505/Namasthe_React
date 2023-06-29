@@ -62,3 +62,8 @@
 
 # Render
    - Whenever a state variable updates react re-renders the component
+   - The logic of updating the compoent is also called as re-rendering
+
+# UseState 
+const arr = useState(resList);
+const [listOfRestaurants, setListOfRestaurants] = arr;
