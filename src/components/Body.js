@@ -1,17 +1,31 @@
 import RestaurantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 const Body = () => {
 
     // Local State Variable - Super powerful variable
-    const [listOfRestaurants, setListOfRestaurants] = useState(resList);
+    const [listOfRestaurants, setListOfRestaurants] = useState([]);
 
-    // or
-    // const arr = useState(resList);
-    // const [listOfRestaurants, setListOfRestaurants] = arr;
+    useEffect(() => {
+        console.log("useEffect Called");
+        fetchData();
+    }, []);
 
-    // const list = [];
-    // list.push("abc");
+    const fetchData = async() => {
+        const data =await fetch(
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+            );
+
+            const json  = await data.json();
+            console.log(json);
+            // Optional Chaining
+            setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    }
+
+
+    if(listOfRestaurants.length === 0){
+        return<Shimmer />
+    }
 
     return (
         <div className="body">
