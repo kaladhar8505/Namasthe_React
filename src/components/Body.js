@@ -5,6 +5,12 @@ const Body = () => {
 
     // Local State Variable - Super powerful variable
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
+    const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+    const[searchText, setSearchText] = useState("");
+
+
+    // Whenever state variable update, react triggers a reconciliation cycle(re-renders the component)
+    console.log("Body rendered")
 
     useEffect(() => {
         console.log("useEffect Called");
@@ -20,6 +26,7 @@ const Body = () => {
             console.log(json);
             // Optional Chaining
             setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+            setFilteredRestaurant(json?.data?.cards[2]?.data?.data?.cards);
     }
 
 
@@ -31,6 +38,23 @@ const Body = () => {
     return listOfRestaurants.length === 0 ? <Shimmer /> : (
         <div className="body">
             <div className="filter">
+                <div className="search">
+                    <input 
+                        type="text" 
+                        className="search-box" 
+                        value = {searchText} 
+                        onChange={(e) => {
+                            setSearchText(e.target.value);
+                    }}
+                    />
+                    <button onClick={() => {
+                        // Filter the restaurant cards and update the UI
+                        // search Text
+                        console.log(searchText);
+                            const filteredRestaurant = listOfRestaurants.filter((res) => res.data.name.toLowerCase().includes(searchText));
+                            setFilteredRestaurant(filteredRestaurant);
+                    }}>Search</button>
+                </div>
                 <button 
                     className="filter-btn" 
                     onClick={() => {
@@ -43,7 +67,7 @@ const Body = () => {
             </div>
             <div className="res-container">
                 {
-                    listOfRestaurants.map((restaurant) => (
+                    filteredRestaurant.map((restaurant) => (
                         <RestaurantCard key={restaurant.data.id} resData={restaurant} />
                     ))
                 }
