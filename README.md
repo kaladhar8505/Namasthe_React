@@ -67,3 +67,7 @@
 # UseState 
 const arr = useState(resList);
 const [listOfRestaurants, setListOfRestaurants] = arr;
+
+# 2 Types Routing in web apps
+   - Client Side Routing
+   - Server Side Routing
