@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 const Body = () => {
 
     // Local State Variable - Super powerful variable
@@ -25,8 +26,8 @@ const Body = () => {
             const json  = await data.json();
             console.log(json);
             // Optional Chaining
-            setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-            setFilteredRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+            setListOfRestaurants( json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            setFilteredRestaurant(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
 
@@ -68,7 +69,12 @@ const Body = () => {
             <div className="res-container">
                 {
                     filteredRestaurant.map((restaurant) => (
-                        <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+                        <Link
+                            key={restaurant?.info.id}
+                            to={"/restaurants/" + restaurant?.info.id}
+                        >
+                        <RestaurantCard resData={restaurant?.info} />
+                        </Link>
                     ))
                 }
             </div>
