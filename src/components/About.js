@@ -7,9 +7,7 @@ constructor(props){
     console.log("Parent Contructor")
 }
 
-// compo
-
-componentDidMount() {
+async componentDidMount() {
     console.log("Parent Compoent Did Mount")
 }
 
@@ -20,24 +18,9 @@ componentDidMount() {
                 <h1>About</h1>
                 <h2>This is Namaste React Web Series</h2>
                 <UserClass name={"First"} location={"Bangalore"} contact={"@kaladhark"}/>
-                <UserClass name={"Second"} location={"Bangalore"} contact={"@kaladhark"}/>
             </div>
         );
     }
 }
-
-/*
-Parent Contructor
-Parent - Render
-    -FirstChild Contructor
-    -FirstChild Render
-    -SecondChild Contructor
-    -SecondChild Render
-
-    <DOM UPDATED - IN SINGLE BATCH>
-    -FirstChild Component Did Mount
-    -SecondChild Component Did Mount
-Parent Compoent Did Mount
-*/
 
 export default About;
