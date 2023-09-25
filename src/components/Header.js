@@ -22,8 +22,6 @@ const Header = () => {
         <ul>
         <li>
           Online Status: {onlineStatus ? "Online" : "Offline"}
-
-    
           </li>
           <li>
           <Link to="/">Home</Link>
